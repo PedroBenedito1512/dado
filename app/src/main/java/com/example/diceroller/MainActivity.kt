@@ -67,13 +67,12 @@ fun DiceRollerApp() {
         .wrapContentSize(Alignment.Center)
     )
 }
-
+var soma=0
+var somaseis =0
+var jogadas =0
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     var result by remember { mutableStateOf(1) }
-    var soma by remember { mutableStateOf(0) }
-    var somaseis by remember { mutableStateOf(0) }
-    var jogadas by remember { mutableStateOf(0) }
     val imageResource = when(result) {
         1 -> R.drawable.dice_1
         2 -> R.drawable.dice_2
@@ -87,9 +86,8 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                val newResult = (1..6).random()
-                result = newResult
-                soma += newResult
+                result = (1..6).random()
+                soma += result
                 jogadas+=1
                 if(result==6){
                     somaseis+=1
